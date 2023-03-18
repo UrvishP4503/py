@@ -5,53 +5,51 @@ class Tree:
         self.right = right
 
 
-class Solution:
-    def inorder(root):
-        stack = []
-        temp = root
+def inorder(root: Tree) -> None:
+    stack = []
+    temp = root
+    while temp or stack:
+        if temp:
+            stack.append(temp)
+            temp = temp.left
+        else:
+            temp = stack.pop()
+            print(f"{temp.val} ", end="")
+            temp = temp.right
+    print()
 
-        while temp or stack:
-            if temp:
-                stack.append(temp)
-                temp = temp.left
+
+def prorder(root: Tree) -> None:
+    stack = []
+    temp = root
+    while temp or stack:
+        if not temp:
+            temp = stack.pop()
+            temp = temp.right
+        else:
+            print(f"{temp.val} ", end="")
+            stack.append(temp)
+            temp = temp.left
+    print()
+
+
+def postorder(root: Tree) -> None:
+    stack = []
+    temp = root
+    last_visited = None
+
+    while temp or stack:
+        if not temp:
+            peek_node = stack[-1]
+            if peek_node.right and last_visited != peek_node.right:
+                temp = peek_node.right
             else:
-                temp = stack.pop()
-                print(f"{temp.val} ",end="")
-                temp = temp.right
-        print()
-
-
-    def prorder(root):
-        stack = []
-        temp = root
-
-        while temp or stack:
-            if temp:
-                print(f"{temp.val} ",end = "")
-                stack.append(temp)
-                temp = temp.left
-            else:
-                temp = stack.pop()
-                temp = temp.right
-        print()
-    def postorder(root):
-        stack = []
-        temp = root
-        last_visited = None
-
-        while temp or stack:
-            if temp:
-                stack.append(temp)
-                temp = temp.left
-            else:
-                peek_node = stack[-1]
-                if peek_node.right and last_visited != peek_node.right:
-                    temp = peek_node.right
-                else:
-                    last_visited = stack.pop()
-                    print(f"{last_visited.val} ", end="")
-
-        print()
+                last_visited = stack.pop()
+                print(f"{last_visited.val} ", end="")
+        else:
+            stack.append(temp)
+            temp = temp.left
+    print()
 
 
 if __name__ == "__main__":
@@ -61,8 +59,8 @@ if __name__ == "__main__":
     node4 = Tree(4)
     node3 = Tree(3, node6, node7)
     node2 = Tree(2, node4, node5)
-    root = Tree(1, node2, node3)
+    node1 = Tree(1, node2, node3)
 
-    Solution.prorder(root)
-    Solution.inorder(root)
-    Solution.postorder(root)
+    prorder(node1)
+    inorder(node1)
+    postorder(node1)

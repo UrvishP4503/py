@@ -34,19 +34,22 @@ class Solution:
                 temp = stack.pop()
                 temp = temp.right
         print()
-#TODO: postorder
     def postorder(root):
         stack = []
         temp = root
+        last_visited = None
 
         while temp or stack:
             if temp:
                 stack.append(temp)
                 temp = temp.left
             else:
-                temp = stack.pop()
-                temp = temp.right
-                print(f"{temp.val} ", end="")
+                peek_node = stack[-1]
+                if peek_node.right and last_visited != peek_node.right:
+                    temp = peek_node.right
+                else:
+                    last_visited = stack.pop()
+                    print(f"{last_visited.val} ", end="")
 
         print()
 

@@ -38,6 +38,7 @@ mail_list = ["urvishp45003@gmail.com",
              "kahan2607@gmail.com",
              "jalvrund2017@gmail.com",
              "medivyapatel27@gmail.com",
+             "hetp841@gmail.com",
              ]
 
 for i in mail_list:

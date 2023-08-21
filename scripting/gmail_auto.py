@@ -2,6 +2,8 @@ import os
 import smtplib
 import ssl
 from email.message import EmailMessage
+# credentials
+# MAIL_ID=jib33626@gmail.com;PASSWORD=hrgknprqkdylqwpi
 
 # credentials
 # PASSWORD = os.environ.get("PASSWORD")

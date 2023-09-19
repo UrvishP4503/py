@@ -1,3 +1,6 @@
+import time
+
+
 def insertion_sort(arr: list[int]) -> None:
     for i in range(1, len(arr)):
         j = i
@@ -9,7 +12,7 @@ def insertion_sort(arr: list[int]) -> None:
 def selection_sort(arr: list[int]) -> None:
     for i in range(len(arr)):
         minimum = i
-        for j in range(i + 1,len(arr)):
+        for j in range(i + 1, len(arr)):
             if arr[j] < arr[minimum]:
                 minimum = j
         if i != minimum:
@@ -32,15 +35,17 @@ arr2 = [65, 43, 87, 10, 56, 29, 76, 98, 54, 21, 43, 67, 89, 32, 12]
 arr1 = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 # arr2 = [34, 12, 56, 78, 23, 45, 89, 67, 21, 43, 87, 10, 54, 32, 98]
 
-
-print(f'Before sorting : {arr1}')
+stt = time.time()
+# print(f'Before sorting : {arr1}')
 # insertion_sort(arr1)
 # selection_sort(arr1)
 bubble_sort(arr1)
-print(f'After sorting : {arr1}\n')
+# print(f'After sorting : {arr1}\n')
+ett = time.time() - stt
+print(ett)
 
-print(f'Before sorting : {arr2}')
-# insertion_sort(arr2)
-# selection_sort(arr2)
-bubble_sort(arr2)
-print(f'After sorting : {arr2}')
+# print(f'Before sorting : {arr2}')
+# # insertion_sort(arr2)
+# # selection_sort(arr2)
+# bubble_sort(arr2)
+# print(f'After sorting : {arr2}')
